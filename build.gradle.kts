@@ -1,24 +1,35 @@
 plugins {
     java
-    kotlin("jvm") version "1.4.31"
+    kotlin("jvm") version "1.4.31" apply false
     `kotlin-dsl`
     application
 }
-
-group = "org.example"
-version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
 }
 
-dependencies {
-    implementation("org.flywaydb:flyway-core:6.1.4")
-    implementation("org.postgresql:postgresql:42.2.9")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
-}
+subprojects {
+    apply {
+        plugin("org.jetbrains.kotlin.jvm")
+    }
 
-tasks.getByName<Test>("test") {
-    useJUnitPlatform()
+
+    group = "org.example"
+    version = "1.0-SNAPSHOT"
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation("org.flywaydb:flyway-core:8.0.1")
+        implementation("org.postgresql:postgresql:42.2.9")
+        testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
+        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
+    }
+
+    tasks.getByName<Test>("test") {
+        useJUnitPlatform()
+    }
 }
