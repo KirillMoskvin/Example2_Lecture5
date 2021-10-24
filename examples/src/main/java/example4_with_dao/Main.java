@@ -10,8 +10,6 @@ import java.sql.*;
 public final class Main {
 
   private static final @NotNull JDBCCredentials CREDS = JDBCCredentials.DEFAULT;
-  private static final @NotNull String INSERT_SQL = "INSERT INTO person(id, name) VALUES(?, ?)";
-  private static final @NotNull String SELECT_SQL = "SELECT * FROM person WHERE name = ?";
 
   public static void main(@NotNull String[] args) {
     try (Connection connection = DriverManager.getConnection(CREDS.url(), CREDS.login(), CREDS.password())) {
