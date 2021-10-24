@@ -1,8 +1,8 @@
-package example4_with_dao;
+package example6_with_dao;
 
 import commons.JDBCCredentials;
-import example4_with_dao.dao.PersonDAO;
-import example4_with_dao.entity.Person;
+import example6_with_dao.dao.PersonDAO;
+import example6_with_dao.entity.Person;
 import org.jetbrains.annotations.NotNull;
 
 import java.sql.*;

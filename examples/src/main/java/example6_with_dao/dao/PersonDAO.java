@@ -1,7 +1,7 @@
-package example4_with_dao.dao;
+package example6_with_dao.dao;
 
 import commons.DAO;
-import example4_with_dao.entity.Person;
+import example6_with_dao.entity.Person;
 import org.jetbrains.annotations.NotNull;
 
 import java.sql.*;

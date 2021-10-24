@@ -1,4 +1,4 @@
-package example4_with_dao.entity;
+package example6_with_dao.entity;
 
 import org.jetbrains.annotations.NotNull;
 
