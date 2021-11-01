@@ -2,11 +2,10 @@ package example1_simple;
 
 import commons.FlywayInitializer;
 import commons.JDBCCredentials;
-import org.flywaydb.core.Flyway;
 import org.jetbrains.annotations.NotNull;
 
-import java.awt.*;
 import java.sql.*;
+import java.util.Properties;
 
 public final class Main {
 
@@ -14,6 +13,7 @@ public final class Main {
 
   public static void main(@NotNull String[] args) {
     FlywayInitializer.initDb();
+    // Class.forName("org.postgresql.Driver");
     try (Connection connection = DriverManager.getConnection(CREDS.url(), CREDS.login(), CREDS.password())) {
       try (Statement statement = connection.createStatement()) {
         int id = 1;
@@ -36,12 +36,23 @@ public final class Main {
           while (resultSet.next()) {
             final int id = resultSet.getInt("id");
             final String name = resultSet.getString("name");
-            System.out.println("Id:\t" + id + "\tName:\t" + name);
+            System.out.println("\t\t" + id + "\t\t" + name);
           }
         }
       }
     } catch (SQLException exception) {
       System.err.println(exception.getMessage());
+    }
+
+
+    var properties = new Properties();
+    properties.setProperty("login", CREDS.login());
+    properties.setProperty("password", CREDS.password());
+    try (var connection = DriverManager.getConnection(CREDS.url(), properties)) {
+      connection.beginRequest();
+      connection.endRequest();
+    } catch (SQLException ignored) {
+
     }
     System.out.println("Success");
   }

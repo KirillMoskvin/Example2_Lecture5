@@ -11,7 +11,9 @@ public final class JDBCCredentials {
     "postgres",
     "postgres"
   );
-  private static final @NotNull String PREFIX = "jdbc:postgresql:";
+
+  private static final @NotNull String PREFIX = "jdbc:postgresql";
+
   private final @NotNull String host;
   private final @NotNull String port;
   private final @NotNull String dbName;
@@ -32,7 +34,7 @@ public final class JDBCCredentials {
 
   public @NotNull String url() {
     return PREFIX
-      + "//" + host + ':' + port
+      + "://" + host + ':' + port
       + '/' + dbName;
   }
 

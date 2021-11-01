@@ -1,6 +1,5 @@
 package example2_metadata;
 
-import commons.FlywayInitializer;
 import commons.JDBCCredentials;
 import org.jetbrains.annotations.NotNull;
 
